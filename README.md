@@ -1,6 +1,6 @@
 # Setting up a C# project
 -------------------------------------------------------------
-New project > ASP.NET Core Web API C#
+Start Visual Studio > New project > ASP.NET Core Web API C#
 
 ## Files to create:
 #### __Model__ folder
@@ -37,6 +37,8 @@ project_name
     - Properties            (ignore)
     - Controllers
         - AppNameController
+    - DAO
+        - AppNameDAO
     - Model
         - AppDBContext.cs
         - AppName.cs
@@ -51,40 +53,58 @@ project_name
 ## File Explaination
 ### Model/AppName.cs
 Define columns in database
+
 **public int id { get; set; }**
+
 ```public``` ```dtype``` ```column_name_from_db``` ```{ to_get_data; to_set_data; } ```
 
-#### Model/AppDBContext.cs
+### Model/AppDBContext.cs
 Communicates with DB
+
 - **public class AppDBContext:DbContext**
+
 Inherits DbContext from ```Microsoft.EntityFrameworkCore;``` package.
 
 - **public DbSet<AppName>table_name { get; set; }**
+
 ```DbSet```
+
 ```<AppName>``` class name defined in Model/AppName.cs
+
 ```table_name``` table name in database
+
 ```{ get; set; }``` { to_get_data; to_set_data; }
 
-#### DAO/AppNameDAO.cs
+### DAO/AppNameDAO.cs
 Define functions name. We write the logic in AppNameRepository.cs
+
+
 - **public string AddData(AppName app_name_variable);**
+
 ```string``` if adding data to database, nothing is returned. Since we have to return something from the function, return string.
+
 ```AddData``` Function we'll write logic for in AppNameRepository.cs
+
 ```(AppName app_name_variable)``` creating an object from our main class, AppName
 
 - **public List<AppName> GetData();**
+
 ```List<AppName>``` retrieving data from DB, recieve list of JSON
 
 - **public string UpdateData(User user);**
+
 ```string``` updating data, same like adding data.
 
 
-#### Repository/AppNameRepository.cs
+### Repository/AppNameRepository.cs
 - **public class AppNameRepository : AppNameDAO**
+
 ```: AppNameDAO``` inherit function names defined in AppNameDAO
 
 - **private readonly AppDBContext db_variable_name;**
+
 ```private``` private so other class dont read the DB.
+
 ```AppDBContext db_variable_name;``` define db variable to use.
 
 - **public AppNameRepository(AppDBContext db_variable_name)**
@@ -93,6 +113,7 @@ To use the private DB
 
 #### Controllers/AppNameController.cs
 - Import AppNameDAO privately and use it
+
 ```
 private readonly AppNameDAO appnameDAO;
 public UserController(AppNameDAO appnameDAO)
@@ -110,14 +131,19 @@ public IActionResult GetData()
 }
 ```
 ```[HttpGet]``` get method
+
 ```IActionResult``` makes sure to return something
+
 ```GetData()``` function name defined in DAO and Repository
+
 ```return Ok(AppNameDAO.GetData());``` returns Ok status with whatever returned in the function
+
 ```[HttpPost]``` post method
+
 ```[HttpPut]``` to update data
 
 
-#### appsettings.json
+### appsettings.json
 Set up connection.
 ```
 "ConnectionStrings": {
@@ -127,7 +153,7 @@ Set up connection.
   ```
 
 
- #### Startup.cs
+ ### Startup.cs
  Add this to ```public void ConfigureServices(IServiceCollection services) {}```
  ```
  services.AddControllers();
@@ -191,7 +217,7 @@ Don't send primary key (id).
 - Send
  
 
-Add primary key (id). Primary key must already exist in the DB.
+Add primary key (id). Value of primary key must already exist in the DB.
 
 ------------------------------------------------------------------------
 
