@@ -224,4 +224,4 @@ Add primary key (id). Value of primary key must already exist in the DB.
 
 ------------------------------------------------------------------------
 
-
+![visitors](https://visitor-badge.laobi.icu/badge?page_id=thatguyshzr.dotnet_setup_guide)
