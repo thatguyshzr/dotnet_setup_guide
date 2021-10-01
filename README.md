@@ -3,6 +3,9 @@
 Start Visual Studio > New project > ASP.NET Core Web API C#
 
 ## Files to create:
+![File Structure](project_structure.PNG)
+
+Right click on project_name > Add > New Folder
 #### __Model__ folder
 Create a file ```AppName.cs``` and ```AppDBContext.cs``` in __Model__ folder.
 * Right click on **Model** folder > Add > Class > save as ```AppName.cs```
