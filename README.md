@@ -36,9 +36,9 @@ project_name
     - Dependencies          (ignore)
     - Properties            (ignore)
     - Controllers
-        - AppNameController
+        - AppNameController.cs
     - DAO
-        - AppNameDAO
+        - AppNameDAO.cs
     - Model
         - AppDBContext.cs
         - AppName.cs
