@@ -30,7 +30,7 @@ Change ```interface AppNameDAO``` to  ```public interface AppNameDAO```
 
 #### __Repository__ folder
 Create a file ```AppNameRepository.cs``` in __Repository__ folder.
-* Right click on **Repository** folder > Add > Class > Interface > save as ```AppNameRepository.cs```
+* Right click on **Repository** folder > Add > Class > save as ```AppNameRepository.cs```
 --------------------------------------------------------------------
 ## File structure:
 ```
